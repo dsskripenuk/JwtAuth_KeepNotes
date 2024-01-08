@@ -1,0 +1,52 @@
+<div class="form-container" *ngIf="isAuthenticated">
+
+<div class="container">
+    <div class="header">
+        <h1>Keep Notes</h1>
+    </div>
+
+    <div class="add-note">
+
+    <form *ngIf="editing" (submit)="saveEdit()">
+        <div>
+          <label for="editNoteTitle">Title:</label>
+          <input type="text" id="editNoteTitle" [(ngModel)]="editNoteTitle" name="title" required>
+        </div>
+      
+        <div>
+          <label for="editNoteContent">Content:</label>
+          <textarea id="editNoteContent" [(ngModel)]="editNoteContent" name="content" required></textarea>
+        </div>
+      
+        <button type="submit">Save Edit</button>
+        <button type="button" (click)="cancelEdit()">Cancel Edit</button>
+      </form>
+    </div>
+
+    <div class="notes-container">
+        <div *ngFor="let note of notes" class="note">
+            <h2>{{ note.title }}</h2>
+            <p>{{ note.content }}</p>
+            <button (click)="editNote(note.id)">Edit</button>
+            <button (click)="deleteNote(note.id)">Delete</button>
+        </div>
+    </div>
+    <div class="add-note">
+        <form (submit)="addNote()">
+            <div>
+              <label for="newNoteTitle">Title:</label>
+              <input type="text" id="newNoteTitle" [(ngModel)]="newNoteTitle" name="title" required>
+            </div>
+    
+            <div>
+              <label for="newNoteContent">Content:</label>
+              <textarea id="newNoteContent" [(ngModel)]="newNoteContent" name="content" required></textarea>
+            </div>
+    
+            <button type="submit">Add Note</button>
+          </form>
+
+    
+    </div>
+</div>
+</div>

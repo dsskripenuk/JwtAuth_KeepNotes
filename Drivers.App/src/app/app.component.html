@@ -1,0 +1,7 @@
+
+<div class="header">
+  <button *ngIf="authStateService.getAuthState()" (click)="logout()">Logout</button>
+</div>
+
+
+<router-outlet></router-outlet>

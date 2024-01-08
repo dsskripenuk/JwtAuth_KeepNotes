@@ -1,0 +1,35 @@
+ <div class="form-container" *ngIf="showLoginForm; else registerForm">
+    <h2>Login</h2>
+    <div>
+      <label>Email:</label>
+      <input [(ngModel)]="loginDto.email" />
+    </div>
+    <div>
+      <label>Password:</label>
+      <input [(ngModel)]="loginDto.password" [type]="showPassword ? 'text' : 'password'" required />
+      <button type="button" (click)="togglePasswordVisibility()" style="background-color: transparent; color: black; margin-bottom: 20px; padding: 0px;">Show Password</button>
+    </div>
+    <button (click)="login(loginDto)" type="email">Login</button>
+    <p (click)="toggleForm()">Don't have an account? Register</p>
+  </div>
+  
+  <ng-template #registerForm>
+    <div class="form-container">
+      <h2>Register</h2>
+      <div>
+        <label>Name:</label>
+        <input [(ngModel)]="registerDto.name" />
+      </div>
+      <div>
+        <label>Email:</label>
+        <input [(ngModel)]="registerDto.email" />
+      </div>
+      <div>
+        <label>Password:</label>
+        <input [(ngModel)]="registerDto.password" [type]="showPassword ? 'text' : 'password'" required />
+        <button type="button" (click)="togglePasswordVisibility()" style="background-color: transparent; color: black; margin-bottom: 20px; padding: 0px;">Show Password</button>
+      </div>
+      <button (click)="register(registerDto)" type="email">Register</button>
+      <p (click)="toggleForm()">Already have an account? Login</p>
+    </div>
+  </ng-template>
